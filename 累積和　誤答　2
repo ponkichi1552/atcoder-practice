@@ -1,0 +1,47 @@
+N= int(input())
+XY = [list(map(int,input().split())) for i in range(N)]
+Q = int(input())
+
+k = 1501
+count = 0
+i = 1500
+
+
+dekaihyou = [[0 for _ in range(k)] for _ in range(k)]
+
+
+for o in range(N):
+  dekaihyou[XY[o][1]][XY[o][0]] = 1
+  for l in range(XY[o][1],k):
+    for j in range(XY[o][0],k):
+      if dekaihyou[l][j - 1] == 1:
+        count += 1
+        dekaihyou[l][j] = count + 1
+
+
+
+#      if j > 0:
+#        if dekaihyou[l][j - 1] == 1:
+#          dekaihyou[l][j] = 1
+  
+  
+#  for l in range(k - XY[o][0]):
+#    dekaihyou[XY[o][1][l + XY[o][0]] = 1 + dekaihyou[XY[o][1]][l + XY[o][0] - 1]
+#    for j in range(k - XY[o][1]):
+#      dekaihyou[j + XY[o][1]][l + XY[o][0]] = 1 + dekaihyou[j - 1 + XY[o][1]][l + XY[o][0]]
+
+A =[list(map(int,input().split())) for i in range(Q)]
+for i in range(Q):
+  goukei = dekaihyou[A[i][0]][A[i][1]] - dekaihyou[A[i][2] - 1][A[i][1]] - dekaihyou[A[i][0]][A[i][3] - 1] + dekaihyou[A[i][2] - 1][A[i][3] - 1]
+  print(goukei)
+
+
+
+#for i in range(k):
+#  dekaihyou[1][i] = count
+#  count += 1
+  
+#for i in range(2,k):
+#  for l in range(1,k):
+#    dekaihyou[i][l] =dekaihyou[i-1][l] + 1
+
