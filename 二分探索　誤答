@@ -1,0 +1,45 @@
+NX = list(map(int,input().split()))
+A = list(map(int,input().split()))
+
+hanbun = NX[0]//2
+kuo_ta_2 = NX[0]//4 + NX[0]//2
+kuo_ta_1 = NX[0]//4
+i = 0
+
+
+
+if A[hanbun - 1] < NX[1]:
+  while i < 17:
+    if A[kuo_ta_1 + hanbun] == NX[1]:
+      print(kuo_ta_1 + hanbun + 1)
+      break
+    
+    if A[kuo_ta_1 + hanbun] < NX[1]:
+      i += 1
+      kuo_ta_1 = kuo_ta_1 + kuo_ta_1//2
+      
+      
+    if A[kuo_ta_1 + hanbun] > NX[1]:
+      i += 1
+      kuo_ta_1 = kuo_ta_1//2
+      
+
+if A[hanbun - 1] == NX[1]:
+  print(hanbun )
+  
+if A[hanbun - 1] > NX[1]:
+  while i < 17:
+    if A[kuo_ta_1] > NX[1]:
+      i += 1
+      kuo_ta_1 = kuo_ta_1 + kuo_ta_1//2
+      
+      
+    if A[kuo_ta_1] == NX[1]:
+      print(kuo_ta_1 + 1)
+      break
+      
+    if A[kuo_ta_1] > NX[1]:
+      i += 1
+      kuo_ta_1 = kuo_ta_1//2
+      
+      
