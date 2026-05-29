@@ -1,0 +1,41 @@
+N= int(input())
+XY = [list(map(int,input().split())) for i in range(N)]
+Q = int(input())
+
+k = 1501
+count = 0
+i = 1500
+
+
+dekaihyou = [[0 for _ in range(k)] for _ in range(k)]
+
+for o in range(N):
+  x = XY[o][0]
+  y = XY[o][1]
+  dekaihyou[y][x] += 1
+
+for y in range(1, k):
+  for x in range(1, k):
+    dekaihyou[y][x] = (
+      dekaihyou[y][x]
+      + dekaihyou[y - 1][x]
+      + dekaihyou[y][x - 1]
+      - dekaihyou[y - 1][x - 1]
+    )
+
+A = [list(map(int, input().split())) for i in range(Q)]
+
+for i in range(Q):
+  a = A[i][0]
+  b = A[i][1]
+  c = A[i][2]
+  d = A[i][3]
+
+  goukei = (
+    dekaihyou[d][c]
+    - dekaihyou[b - 1][c]
+    - dekaihyou[d][a - 1]
+    + dekaihyou[b - 1][a - 1]
+  )
+
+  print(goukei)
